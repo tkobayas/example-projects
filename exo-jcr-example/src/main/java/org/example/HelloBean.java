@@ -13,47 +13,48 @@ import org.exoplatform.services.jcr.core.ManageableRepository;
 
 @Stateless
 public class HelloBean implements Hello {
-	
-	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public String sayHello() {
 
-		Session session = doWork();
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public String sayHello(String user) {
+
+		System.out.println("hello");
+
+		Session session = doWork(user);
 		session.logout();
-		
+
 		return "Hello";
 	}
-	
+
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Session doWork() {
+	public Session doWork(String user) {
 		Session session = null;
 		try {
-			session = getSessionFromExoAPI();
+			session = getSessionFromExoAPI(user);
 			System.out.println(session.getRootNode());
+			Thread.sleep(5000);
 			session.save();
+			System.out.println("done");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return session;
 	}
 
-	private Session getSessionFromExoAPI() {
+	private Session getSessionFromExoAPI(String user) throws Exception {
 
 		Session session = null;
-		try {
-			ExoContainer container = ExoContainerContext
-					.getContainerByName("portal");
-			RepositoryService repos = (RepositoryService) container
-					.getComponentInstanceOfType(RepositoryService.class);
-			ManageableRepository repo = repos.getRepository("repository");
-			SimpleCredentials credencials = new SimpleCredentials("root",
-					"gtn".toCharArray());
-			session = repo.login(credencials);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		ExoContainer container = ExoContainerContext
+				.getContainerByName("portal");
+		RepositoryService repos = (RepositoryService) container
+				.getComponentInstanceOfType(RepositoryService.class);
+		ManageableRepository repo = repos.getRepository("repository");
+		SimpleCredentials credencials = new SimpleCredentials(user,
+				"gtn".toCharArray());
+		session = repo.login(credencials, "portal-system");
+
 		return session;
 	}
 

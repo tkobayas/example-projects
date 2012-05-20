@@ -5,5 +5,5 @@ import javax.ejb.*;
 @Remote
 public interface Hello
 {
-    public String sayHello();
+    public String sayHello(String user);
 }

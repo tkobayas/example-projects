@@ -2,6 +2,9 @@ package org.example;
 
 import javax.naming.*;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -49,6 +52,38 @@ public class HelloBeanTest {
 
     @Test
     public void testSayHello_String() {
-        assertTrue(hello.sayHello().equals("Hello"));
+    	
+    	ExecutorService executor1 = Executors.newSingleThreadExecutor();
+    	ExecutorService executor2 = Executors.newSingleThreadExecutor();
+    	
+    	for (int i = 0; i < 1; i ++) {
+			executor1.execute(new HelloTask("root"));
+			executor2.execute(new HelloTask("john"));
+    	}
+    	
+    	executor1.shutdown();
+    	executor2.shutdown();
+    	try {
+			executor1.awaitTermination(30, TimeUnit.SECONDS);
+			executor2.awaitTermination(30, TimeUnit.SECONDS);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+        assertTrue(true);
+    }
+    
+    class HelloTask implements Runnable {
+    	
+    	private String user;
+    	
+    	public HelloTask(String user) {
+    		this.user = user;
+    	}
+    	
+    	public void run() {
+    		hello.sayHello(user);
+    	}
     }
 }
