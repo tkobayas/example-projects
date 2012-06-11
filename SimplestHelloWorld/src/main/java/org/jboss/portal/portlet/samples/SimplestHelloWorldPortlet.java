@@ -29,22 +29,38 @@ import javax.portlet.GenericPortlet;
 import javax.portlet.PortletURL;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
+import javax.portlet.PortletException;
 
 public class SimplestHelloWorldPortlet extends GenericPortlet
 {
     public void doView(RenderRequest request, RenderResponse response) throws IOException
     {
         PrintWriter writer = response.getWriter();
-        writer.write("dept = " + request.getParameter("dept"));
-        writer.write("<br>");
+        writer.print("dept = " + request.getParameter("dept"));
+        writer.print("<br>");
 
-        PortletURL url = response.createRenderURL();
-        url.setParameter("dept", "aaa");
-        String urlString = url.toString();
+        PortletURL renderUrl = response.createRenderURL();
+        renderUrl.setParameter("dept", "aaa");
+        String renderUrlString = renderUrl.toString();
+        writer.print("<A HREF=\"" + renderUrlString + "\">RenderURL link with dept param</A>");
+        writer.print("<br>");
 
-        writer.print("<A HREF=\"" + urlString + "\">RenderURL link with dept param</A>");
+        PortletURL actionUrl = response.createActionURL();
+        String actionUrlString = actionUrl.toString();
+        writer.print("<A HREF=\"" + actionUrlString + "\">ActionURL link without param</A>");
+        writer.print("<br>");
 
         writer.close();
     }
+
+    public void processAction(ActionRequest request, ActionResponse response) throws PortletException
+    {
+        System.out.println("processAction!");
+        
+    }
+
+
 }
 
