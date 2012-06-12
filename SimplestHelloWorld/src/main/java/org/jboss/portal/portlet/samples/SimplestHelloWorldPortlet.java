@@ -43,13 +43,15 @@ public class SimplestHelloWorldPortlet extends GenericPortlet
 
         PortletURL renderUrl = response.createRenderURL();
         renderUrl.setParameter("dept", "aaa");
-        String renderUrlString = renderUrl.toString();
-        writer.print("<A HREF=\"" + renderUrlString + "\">RenderURL link with dept param</A>");
+        writer.print("<A HREF=\"");
+        renderUrl.write(writer);
+        writer.print("\">RenderURL link with dept param</A>");
         writer.print("<br>");
 
         PortletURL actionUrl = response.createActionURL();
-        String actionUrlString = actionUrl.toString();
-        writer.print("<A HREF=\"" + actionUrlString + "\">ActionURL link without param</A>");
+        writer.print("<A HREF=\"");
+        actionUrl.write(writer);
+        writer.print("\">ActionURL link without param</A>");
         writer.print("<br>");
 
         writer.close();
