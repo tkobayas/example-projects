@@ -31,21 +31,6 @@
                         <ejbVersion>3.0</ejbVersion>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <groupId>org.glassfish.maven.plugin</groupId>
-                    <artifactId>maven-glassfish-plugin</artifactId>
-                    <version>2.1</version>
-                    <configuration>
-                        <domain>
-                            <name>domain1</name>
-                            <adminPort>4848</adminPort>
-                        </domain>
-                        <glassfishDirectory>${env.GLASSFISH_HOME}</glassfishDirectory>
-                        <user>admin</user>
-                        <adminPassword>adminadmin</adminPassword>
-                        <echo>true</echo>
-                    </configuration>
-                </plugin>
             </plugins>
         </pluginManagement>
     </build>
