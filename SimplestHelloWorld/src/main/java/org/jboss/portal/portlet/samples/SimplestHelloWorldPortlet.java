@@ -37,6 +37,10 @@ public class SimplestHelloWorldPortlet extends GenericPortlet
 {
     public void doView(RenderRequest request, RenderResponse response) throws IOException
     {
+    	System.out.println("getContextPath : " + request.getContextPath());
+
+    	System.out.println("getAttribute : " + request.getAttribute("zzz"));
+    	
         PrintWriter writer = response.getWriter();
         writer.print("dept = " + request.getParameter("dept"));
         writer.print("<br>");
@@ -60,7 +64,7 @@ public class SimplestHelloWorldPortlet extends GenericPortlet
     public void processAction(ActionRequest request, ActionResponse response) throws PortletException
     {
         System.out.println("processAction!");
-        
+        request.setAttribute("zzz", "xxx");
     }
 
 
