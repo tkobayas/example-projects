@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.portlet.GenericPortlet;
+import javax.portlet.MimeResponse;
 import javax.portlet.PortletURL;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
@@ -33,8 +34,20 @@ import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.PortletException;
 
+import org.w3c.dom.Element;
+
 public class SimplestHelloWorldPortlet extends GenericPortlet
 {
+	
+	public void doHeaders(RenderRequest request, RenderResponse response) {
+		super.doHeaders(request, response);
+		Element headElem = response.createElement("script");
+		headElem.setAttribute("language", "javascript");
+		headElem.setAttribute("src", "/xxx/javascript/portal.js");
+		headElem.setAttribute("type", "text/javascript");
+		response.addProperty(MimeResponse.MARKUP_HEAD_ELEMENT, headElem); 
+	}
+	
     public void doView(RenderRequest request, RenderResponse response) throws IOException
     {
     	System.out.println("getContextPath : " + request.getContextPath());
