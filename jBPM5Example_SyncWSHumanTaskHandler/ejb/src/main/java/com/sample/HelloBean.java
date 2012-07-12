@@ -108,15 +108,17 @@ public class HelloBean implements HelloLocal {
 
 		org.jbpm.task.service.TaskService taskService = new org.jbpm.task.service.TaskService(
 				emf, SystemEventListenerFactory.getSystemEventListener());
+		
+		LocalTaskService localTaskService = new LocalTaskService(taskService);
 
 		SyncWSHumanTaskHandler humanTaskHandler = new SyncWSHumanTaskHandler(
-				new LocalTaskService(taskService), ksession);
+				localTaskService, ksession);
 		humanTaskHandler.setLocal(true);
 		humanTaskHandler.connect();
 		ksession.getWorkItemManager().registerWorkItemHandler("Human Task",
 				humanTaskHandler);
 
-		return new LocalTaskService(taskService);
+		return localTaskService;
 	}
 
 	private static KnowledgeBase readKnowledgeBase() throws Exception {
