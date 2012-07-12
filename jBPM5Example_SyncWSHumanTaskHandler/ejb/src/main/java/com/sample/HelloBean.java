@@ -32,7 +32,6 @@ public class HelloBean implements HelloLocal {
 	@PersistenceUnit(unitName = "org.jbpm.persistence.jpa")
 	private EntityManagerFactory emf;
 
-	@Override
 	public long startProcess() throws Exception {
 
 		// load up the knowledge base
@@ -60,13 +59,15 @@ public class HelloBean implements HelloLocal {
 
 		List<TaskSummary> list = localTaskService
 				.getTasksAssignedAsPotentialOwner("john", "en-UK");
-		TaskSummary task = list.get(0);
-		System.out.println("task.getProcessId() = " + task.getProcessId());
-		System.out.println("task.getProcessInstanceId() = "
-				+ task.getProcessInstanceId());
-		System.out.println("John is executing task " + task.getName());
-		localTaskService.start(task.getId(), "john");
-		localTaskService.complete(task.getId(), "john", null);
+
+		for (TaskSummary task : list) {
+			System.out.println("task.getId() = " + task.getId());
+			System.out.println("task.getProcessInstanceId() = "
+					+ task.getProcessInstanceId());
+			System.out.println("John is executing task " + task.getName());
+			localTaskService.start(task.getId(), "john");
+			localTaskService.complete(task.getId(), "john", null);
+		}
 
 		return "Done!";
 	}
@@ -78,13 +79,15 @@ public class HelloBean implements HelloLocal {
 
 		List<TaskSummary> list = localTaskService
 				.getTasksAssignedAsPotentialOwner("mary", "en-UK");
-		TaskSummary task = list.get(0);
-		System.out.println("task.getProcessId() = " + task.getProcessId());
-		System.out.println("task.getProcessInstanceId() = "
-				+ task.getProcessInstanceId());
-		System.out.println("Mary is executing task " + task.getName());
-		localTaskService.start(task.getId(), "mary");
-		localTaskService.complete(task.getId(), "mary", null);
+		
+		for (TaskSummary task : list) {
+			System.out.println("task.getId() = " + task.getId());
+			System.out.println("task.getProcessInstanceId() = "
+					+ task.getProcessInstanceId());
+			System.out.println("Mary is executing task " + task.getName());
+			localTaskService.start(task.getId(), "mary");
+			localTaskService.complete(task.getId(), "mary", null);
+		}
 
 		return "Done!";
 	}
