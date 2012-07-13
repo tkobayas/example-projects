@@ -1,6 +1,8 @@
 package com.sample;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManagerFactory;
@@ -23,6 +25,7 @@ import org.jbpm.process.workitem.wsht.SyncWSHumanTaskHandler;
 import org.jbpm.task.TaskService;
 import org.jbpm.task.query.TaskSummary;
 import org.jbpm.task.service.local.LocalTaskService;
+import org.jbpm.workflow.instance.impl.WorkflowProcessInstanceImpl;
 
 @Stateless
 public class HelloBean implements HelloLocal {
@@ -31,6 +34,8 @@ public class HelloBean implements HelloLocal {
 
 	@PersistenceUnit(unitName = "org.jbpm.persistence.jpa")
 	private EntityManagerFactory emf;
+	
+	private static long pid;
 
 	public long startProcess() throws Exception {
 
@@ -41,13 +46,17 @@ public class HelloBean implements HelloLocal {
 		TaskService localTaskService = getTaskService(ksession);
 
 		// start a new process instance
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("employee", "krisv");
 		ProcessInstance processInstance = ksession
-				.startProcess("com.sample.bpmn.hello");
+				.startProcess("com.sample.bpmn.hello", params);
 
 		long processInstanceId = processInstance.getId();
 
 		System.out.println("Process started ... : processInstanceId = "
 				+ processInstanceId);
+		
+		pid = processInstanceId;
 
 		return processInstanceId;
 	}
@@ -56,6 +65,11 @@ public class HelloBean implements HelloLocal {
 
 		StatefulKnowledgeSession ksession = createKnowledgeSession();
 		TaskService localTaskService = getTaskService(ksession);
+		
+		WorkflowProcessInstanceImpl processInstance = (WorkflowProcessInstanceImpl)ksession.getProcessInstance(pid);
+		String value = (String)processInstance.getVariable("employee");
+		System.out.println("Process Variable : employee = " + value);
+		processInstance.setVariable("employee", "krisv2");
 
 		List<TaskSummary> list = localTaskService
 				.getTasksAssignedAsPotentialOwner("john", "en-UK");
@@ -76,6 +90,11 @@ public class HelloBean implements HelloLocal {
 
 		StatefulKnowledgeSession ksession = createKnowledgeSession();
 		TaskService localTaskService = getTaskService(ksession);
+		
+		WorkflowProcessInstanceImpl processInstance = (WorkflowProcessInstanceImpl)ksession.getProcessInstance(pid);
+		String value = (String)processInstance.getVariable("employee");
+		System.out.println("Process Variable : employee = " + value);
+		processInstance.setVariable("employee", "krisv3");
 
 		List<TaskSummary> list = localTaskService
 				.getTasksAssignedAsPotentialOwner("mary", "en-UK");
