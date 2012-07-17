@@ -47,7 +47,7 @@ public class HelloBean implements HelloLocal {
 
 		// start a new process instance
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("employee", "krisv");
+		params.put("actorIds", "krisv, Jabba Hutt");
 		ProcessInstance processInstance = ksession
 				.startProcess("com.sample.bpmn.hello", params);
 

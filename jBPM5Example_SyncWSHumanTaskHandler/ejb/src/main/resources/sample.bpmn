@@ -12,7 +12,12 @@
              xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
              xmlns:tns="http://www.jboss.org/drools">
 
+  <itemDefinition id="_actorIdsItem" structureRef="String" />
+
   <process processType="Private" isExecutable="true" id="com.sample.bpmn.hello" name="Hello World" >
+
+    <!-- process variables -->
+    <property id="actorIds" itemSubjectRef="_actorIdsItem"/>
 
     <!-- nodes -->
     <startEvent id="_1" name="Start" />
@@ -82,7 +87,7 @@
       </dataInputAssociation>
       <potentialOwner>
         <resourceAssignmentExpression>
-          <formalExpression>john</formalExpression>
+          <formalExpression>#{actorIds}</formalExpression>
         </resourceAssignmentExpression>
       </potentialOwner>
     </userTask>
