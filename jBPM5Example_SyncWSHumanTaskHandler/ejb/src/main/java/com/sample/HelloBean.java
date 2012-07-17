@@ -130,7 +130,7 @@ public class HelloBean implements HelloLocal {
 		
 		LocalTaskService localTaskService = new LocalTaskService(taskService);
 
-		SyncWSHumanTaskHandler humanTaskHandler = new SyncWSHumanTaskHandler(
+		MyHumanTaskHandler humanTaskHandler = new MyHumanTaskHandler(
 				localTaskService, ksession);
 		humanTaskHandler.setLocal(true);
 		humanTaskHandler.connect();
