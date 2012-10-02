@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<definitions name='HelloWorldWSService' targetNamespace='http://simple_invoke/helloworld'
+	xmlns='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+	xmlns:tns='http://simple_invoke/helloworld' xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+	xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+	<types>
+		<xs:schema targetNamespace='http://simple_invoke/helloworld' version='1.0'
+			xmlns:tns='http://simple_invoke/helloworld' xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+			<xs:element name='sayGoodbye' type='tns:sayGoodbye' />
+			<xs:element name='sayGoodbyeResponse' type='tns:sayGoodbyeResponse' />
+			<xs:element name='sayHello' type='tns:sayHello' />
+			<xs:element name='sayHelloResponse' type='tns:sayHelloResponse' />
+			<xs:complexType name='sayGoodbye'>
+				<xs:sequence>
+					<xs:element minOccurs='0' name='toWhom' type='xs:string' />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name='sayGoodbyeResponse'>
+				<xs:sequence>
+					<xs:element minOccurs='0' name='return' type='xs:string' />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name='sayHello'>
+				<xs:sequence>
+					<xs:element minOccurs='0' name='toWhom' type='xs:string' />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name='sayHelloResponse'>
+				<xs:sequence>
+					<xs:element minOccurs='0' name='return' type='xs:string' />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+	</types>
+	<message name='HelloWorld_sayGoodbye'>
+		<part element='tns:sayGoodbye' name='sayGoodbye'></part>
+	</message>
+	<message name='HelloWorld_sayHello'>
+		<part element='tns:sayHello' name='sayHello'></part>
+	</message>
+	<message name='HelloWorld_sayHelloResponse'>
+		<part element='tns:sayHelloResponse' name='sayHelloResponse'></part>
+	</message>
+	<message name='HelloWorld_sayGoodbyeResponse'>
+		<part element='tns:sayGoodbyeResponse' name='sayGoodbyeResponse'></part>
+	</message>
+	<portType name='HelloWorld'>
+		<operation name='sayGoodbye' parameterOrder='sayGoodbye'>
+			<input message='tns:HelloWorld_sayGoodbye'></input>
+			<output message='tns:HelloWorld_sayGoodbyeResponse'></output>
+		</operation>
+		<operation name='sayHello' parameterOrder='sayHello'>
+			<input message='tns:HelloWorld_sayHello'></input>
+			<output message='tns:HelloWorld_sayHelloResponse'></output>
+		</operation>
+	</portType>
+	<binding name='HelloWorldBinding' type='tns:HelloWorld'>
+		<soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http' />
+		<operation name='sayGoodbye'>
+			<soap:operation soapAction='' />
+			<input>
+				<soap:body use='literal' />
+			</input>
+			<output>
+				<soap:body use='literal' />
+			</output>
+		</operation>
+		<operation name='sayHello'>
+			<soap:operation soapAction='' />
+			<input>
+				<soap:body use='literal' />
+			</input>
+			<output>
+				<soap:body use='literal' />
+			</output>
+		</operation>
+	</binding>
+	<service name='HelloWorldWSService'>
+		<port binding='tns:HelloWorldBinding' name='HelloWorldPort'>
+			<soap:address location='http://127.0.0.1:8080/Quickstart_bpel_simple_invoke/HelloWorldWS' />
+		</port>
+	</service>
+	<plnk:partnerLinkType name="theExternalService_PartnerLinkType">
+		<plnk:role name="callingTheExternalService" portType="tns:HelloWorld" />
+	</plnk:partnerLinkType>
+</definitions>
