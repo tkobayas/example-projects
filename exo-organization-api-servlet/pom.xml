@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.example</groupId>
+  <artifactId>exo-organization-api</artifactId>
+  <version>1.0.0</version>
+  <packaging>war</packaging>
+  <name>Organization</name>
+  <description>Organization</description>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <org.exoplatform.kernel.version>2.2.6-GA</org.exoplatform.kernel.version>
+    <org.exoplatform.core.version>2.3.6-GA</org.exoplatform.core.version>
+    <org.exoplatform.ws.version>2.1.6-GA</org.exoplatform.ws.version>
+    <org.exoplatform.jcr.version>1.12.6-GA</org.exoplatform.jcr.version>
+
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-web-api</artifactId>
+      <version>6.0</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.exoplatform.jcr</groupId>
+      <artifactId>exo.jcr.component.core</artifactId>
+      <version>${org.exoplatform.jcr.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+  </dependencies>
+
+</project>
