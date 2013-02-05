@@ -1,0 +1,28 @@
+package org.example;
+    dialect "java"
+
+import org.drools.planner.core.score.buildin.simple.SimpleScoreHolder;
+import org.drools.planner.core.score.constraint.UnweightedConstraintOccurrence;
+import org.drools.planner.core.score.constraint.IntConstraintOccurrence;
+import org.drools.planner.core.score.constraint.ConstraintType;
+
+import org.example.Item;
+import org.example.Bucket;
+
+global SimpleScoreHolder scoreHolder;
+
+// ############################################################################
+// Calculate score
+// ############################################################################
+
+rule "calculate score"
+        salience -1 // Do the other rules first (optional, for performance)
+    when
+        $total : Number() from accumulate(
+            Item($price : price, inCart == true),
+            sum($price)
+        )
+    then
+    	System.out.println("total = " + $total.intValue());
+        scoreHolder.setScore(-Math.abs($total.intValue() - 11000));
+end
