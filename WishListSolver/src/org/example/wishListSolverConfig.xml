@@ -22,10 +22,10 @@
   </constructionHeuristic>
   <localSearch>
     <acceptor>
-      <planningEntityTabuSize>7</planningEntityTabuSize>
+      <planningEntityTabuSize>2</planningEntityTabuSize>
     </acceptor>
     <forager>
-      <minimalAcceptedSelection>1000</minimalAcceptedSelection>
+      <minimalAcceptedSelection>10</minimalAcceptedSelection>
     </forager>
   </localSearch>
 </solver>
