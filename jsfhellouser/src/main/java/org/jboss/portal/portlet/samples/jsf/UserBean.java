@@ -22,6 +22,16 @@
  ******************************************************************************/
 package org.jboss.portal.portlet.samples.jsf;
 
+import java.io.IOException;
+
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponseWrapper;
+
+import org.jboss.portal.portlet.impl.jsr168.api.ActionResponseImpl;
+
 /**
  * @author <a href="mailto:theute@jboss.org">Thomas Heute</a>
  * @version $Revision$
@@ -41,5 +51,34 @@ public class UserBean
       this.userName = userName;
    }
 
+
+   public void downLoadFile(ActionEvent event){
+   		System.out.println(" invoke downLoadFile ....");
+   		
+   		
+   		FacesContext fc = FacesContext.getCurrentInstance();
+   		ExternalContext ec = fc.getExternalContext();
+   		ActionResponseImpl res = (ActionResponseImpl) ec.getResponse();
+   		
+   		HttpServletResponseWrapper response = res.getRealResponse();
+   		response.reset();
+   		
+   		//MimetypesFileTypeMap mimeTypesMap = new MimetypesFileTypeMap();
+   		//String contentType = mimeTypesMap.getContentType(fileName);
+   		response.setContentType("text/x-vcard; charset=UTF-8");
+   		response.setContentLength(100);
+   		response.setHeader("Content-Disposition", "attachment; filename=\"AAAA\"");
+   		try {
+   			ServletOutputStream os = response.getOutputStream();
+   			os.write(new byte[] {55,55,55});
+   			os.flush();
+   			os.close();
+   			System.out.println("download  completed ........");
+   		} catch (IOException e) {
+   			e.printStackTrace();
+   		}
+   		
+   		fc.responseComplete();
+   	}
 }
 

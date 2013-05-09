@@ -13,6 +13,11 @@ my name is JBoss Portal. What's yours ?</div>
 <br/>
 
 <h:form>
+
+<h:commandLink id="downLoadId" 
+ actionListener="#{user.downLoadFile}" 
+				 value="XXX"/>
+				 
    <h:inputText value="#{user.userName}"/>
    <h:commandButton  action="sayHello" value="Say Hello"/>
 </h:form>
