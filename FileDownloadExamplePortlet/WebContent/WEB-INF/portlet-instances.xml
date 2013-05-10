@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE deployments PUBLIC
+   "-//JBoss Portal//DTD Portlet Instances 2.6//EN"
+   "http://www.jboss.org/portal/dtd/portlet-instances_2_6.dtd">
+
+<deployments>
+	<deployment>
+		<instance>
+			<display-name xml:lang="en">FileDownloadExamplePortlet</display-name>
+			<instance-id>FileDownloadExamplePortletInstance</instance-id>
+			<portlet-ref>FileDownloadExamplePortlet</portlet-ref>
+		</instance>
+	</deployment>
+</deployments>
