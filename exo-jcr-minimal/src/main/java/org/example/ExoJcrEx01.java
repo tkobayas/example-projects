@@ -19,6 +19,7 @@ public class ExoJcrEx01 {
 
 		RepositoryImpl repository = setup();
 
+		// Add some nodes and properties
 		{
 			CredentialsImpl credentials = new CredentialsImpl("root",
 					"exo".toCharArray());
@@ -37,6 +38,7 @@ public class ExoJcrEx01 {
 			session.logout();
 		}
 		
+		// Read nodes and properties
 		{
 			CredentialsImpl credentials = new CredentialsImpl("root",
 					"exo".toCharArray());
