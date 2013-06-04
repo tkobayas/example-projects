@@ -27,7 +27,14 @@ public class ExoJcrEx01 {
 					"production");
 
 			Node rootNode = session.getRootNode();
+
+			// clean up before test
+			if (rootNode.hasNode("training")) {
+				rootNode.getNode("training").remove();
+			}
+			
 			Node training = rootNode.addNode("training", "nt:unstructured");
+			
 			Node day1 = training.addNode("Day-1");
 			day1.setProperty("name", "JCR concepts, architecture and benefits");
 
@@ -37,7 +44,7 @@ public class ExoJcrEx01 {
 			session.save();
 			session.logout();
 		}
-		
+
 		// Read nodes and properties
 		{
 			CredentialsImpl credentials = new CredentialsImpl("root",
@@ -47,17 +54,17 @@ public class ExoJcrEx01 {
 
 			Node rootNode = session.getRootNode();
 			Node training = rootNode.getNode("training");
-			
+
 			NodeIterator nodeIterator = training.getNodes();
-			
+
 			while (nodeIterator.hasNext()) {
 				Node node = (Node) nodeIterator.next();
-				System.out.println(node.getName() + ":" + node.getProperty("name").getString());
+				System.out.println(node.getName() + ":"
+						+ node.getProperty("name").getString());
 			}
-			
+
 			session.logout();
 		}
-		
 
 	}
 
@@ -72,12 +79,14 @@ public class ExoJcrEx01 {
 				"org.apache.commons.logging.impl.SimpleLog");
 		System.setProperty("com.arjuna.ats.arjuna.objectstore.objectStoreDir",
 				"./temp");
-		System.setProperty("ObjectStoreEnvironmentBean.objectStoreDir", "./temp");
+		System.setProperty("ObjectStoreEnvironmentBean.objectStoreDir",
+				"./temp");
 
-		System.out.println(ExoJcrEx01.class.getResource("/exo-configuration.xml"));
-		
-		StandaloneContainer
-				.addConfigurationURL(ExoJcrEx01.class.getResource("/exo-configuration.xml").toString());
+		System.out.println(ExoJcrEx01.class
+				.getResource("/exo-configuration.xml"));
+
+		StandaloneContainer.addConfigurationURL(ExoJcrEx01.class.getResource(
+				"/exo-configuration.xml").toString());
 
 		StandaloneContainer container = StandaloneContainer.getInstance();
 

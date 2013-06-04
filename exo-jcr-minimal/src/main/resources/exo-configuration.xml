@@ -136,6 +136,10 @@
                <property name="url" value="jdbc:hsqldb:file:./temp/data/exodb" />
                <property name="username" value="sa" />
                <property name="password" value="" />
+<!--                <property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
+<!--                <property name="url" value="jdbc:mysql://localhost:3306/exotest" /> -->
+<!--                <property name="username" value="mysql" /> -->
+<!--                <property name="password" value="mysql" /> -->
             </properties-param>
          </init-params>
       </component-plugin>
