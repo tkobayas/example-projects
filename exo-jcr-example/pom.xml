@@ -12,10 +12,10 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <org.exoplatform.kernel.version>2.2.6-GA</org.exoplatform.kernel.version>
-    <org.exoplatform.core.version>2.3.6-GA</org.exoplatform.core.version>
-    <org.exoplatform.ws.version>2.1.6-GA</org.exoplatform.ws.version>
-    <org.exoplatform.jcr.version>1.12.6-GA</org.exoplatform.jcr.version>
+    <org.exoplatform.kernel.version>2.3.8-GA</org.exoplatform.kernel.version>
+    <org.exoplatform.core.version>2.4.6-GA</org.exoplatform.core.version>
+    <org.exoplatform.ws.version>2.2.8-GA</org.exoplatform.ws.version>
+    <org.exoplatform.jcr.version>1.14.8-CR01</org.exoplatform.jcr.version>
 
   </properties>
 

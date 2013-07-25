@@ -10,6 +10,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -49,8 +50,16 @@ public class HelloBeanTest {
     @After
     public void tearDown() {
     }
-
+    
     @Test
+    public void testSayHello() {
+    	
+    	hello.sayHello("john");
+    	
+        assertTrue(true);
+    }
+
+    @Ignore
     public void testSayHello_String() {
     	
     	ExecutorService executor1 = Executors.newSingleThreadExecutor();
