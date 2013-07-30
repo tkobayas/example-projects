@@ -18,18 +18,19 @@ import org.exoplatform.services.jcr.RepositoryService;
 import org.exoplatform.services.jcr.core.ManageableRepository;
 
 @Stateless
-@TransactionManagement(TransactionManagementType.BEAN)
+//@TransactionManagement(TransactionManagementType.BEAN)
 public class HelloBean implements Hello {
 	
-    @Resource
-    private UserTransaction ut;
+//    @Resource
+//    private UserTransaction ut;
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public String sayHello(String user) {
 
 		System.out.println("hello");
 
 		Session session = doWork(user);
-		session.logout();
+		//session.logout();
 
 		return "Hello";
 	}
@@ -37,7 +38,7 @@ public class HelloBean implements Hello {
 	public Session doWork(String user) {
 		Session session = null;
 		try {
-			ut.begin();
+//			ut.begin();
 			
 			session = getSessionFromExoAPI(user);
 			//System.out.println(session.getRootNode());
@@ -47,18 +48,18 @@ public class HelloBean implements Hello {
 			session.save();
 			System.out.println("done");
 			
-			ut.commit();
-			
+//			ut.commit();
+//			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
-			try {
-				ut.rollback();
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+//			
+//			try {
+//				ut.rollback();
+//			} catch (Exception e1) {
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+//			}
 		}
 
 		return session;

@@ -18,6 +18,7 @@ public class HelloBeanTest {
 
     private static InitialContext ic;
     private Hello hello;
+    private Wrapper wrapper;
 
     public HelloBeanTest() {
     }
@@ -42,6 +43,7 @@ public class HelloBeanTest {
     public void setUp() {
         try {
             hello = (Hello)ic.lookup("HelloBean/remote");
+            wrapper = (Wrapper)ic.lookup("WrapperBean/remote");
         } catch (NamingException e) {
             e.printStackTrace();
         }
@@ -54,7 +56,8 @@ public class HelloBeanTest {
     @Test
     public void testSayHello() {
     	
-    	hello.sayHello("john");
+//    	hello.sayHello("john");
+    	wrapper.wrap("john");
     	
         assertTrue(true);
     }
