@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+
+<suite name="Hello Tests" verbose="2" parallel="false">
+   <test name="Hello Test">
+     <classes>
+       <class name="com.mydomain.myproject.test.HelloTest"/>       
+     </classes>
+   </test>	
+</suite>
