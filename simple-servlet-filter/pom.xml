@@ -1,0 +1,18 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <version>1.0</version>
+  <groupId>org.examplet</groupId>
+  <artifactId>simple-servlet-filter</artifactId>
+  <packaging>jar</packaging>
+  <name>simple-servlet-filter</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.4</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+</project>
