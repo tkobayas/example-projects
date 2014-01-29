@@ -1,7 +1,7 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
   <version>1.0</version>
-  <groupId>org.examplet</groupId>
+  <groupId>org.example</groupId>
   <artifactId>simple-servlet-filter</artifactId>
   <packaging>jar</packaging>
   <name>simple-servlet-filter</name>
