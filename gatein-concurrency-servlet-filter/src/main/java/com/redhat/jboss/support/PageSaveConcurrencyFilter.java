@@ -14,7 +14,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 /*
- * This filter is designed to avoid concurrency against page save. See BZ
+ * This filter is designed to avoid concurrency against page save. See BZ1080249
  */
 public class PageSaveConcurrencyFilter implements Filter {
 
