@@ -25,3 +25,7 @@ Run ZooKeeperEx01
 xxx
 cZxid = 0x4
 ...
+[zk: localhost:2181(CONNECTED) 5] quit
+...
+
+$ ./zkServer.sh stop
