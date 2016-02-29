@@ -17,6 +17,8 @@ public class ZooKeeperEx01 {
         ZooKeeper zk = new ZooKeeper("localhost:2181", 3000, null);
         List<ACL> acls = new ArrayList<ACL>();
         acls.add(new ACL(ALL, ANYONE_ID_UNSAFE));
-        zk.create("/tmp/bbb", "xxx".getBytes(), acls, CreateMode.PERSISTENT);
+        zk.create("/tmp/mynode", "bbb".getBytes(), acls, CreateMode.PERSISTENT);
+        
+        System.out.println("done");
     }
 }
