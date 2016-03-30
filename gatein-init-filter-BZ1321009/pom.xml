@@ -1,0 +1,44 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<version>1.0</version>
+	<groupId>com.redhat.jboss.support</groupId>
+	<artifactId>gatein-init-filter-BZ1321009</artifactId>
+	<packaging>jar</packaging>
+	<name>gatein-init-filter-BZ1321009</name>
+
+	<properties>
+		<version.jpp>6.1.1</version.jpp>
+		<org.exoplatform.kernel.version>2.4.7-GA-redhat-1</org.exoplatform.kernel.version>
+		<org.gatein.version>3.6.5.Final-redhat-1</org.gatein.version>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.4</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.exoplatform.kernel</groupId>
+			<artifactId>exo.kernel.container</artifactId>
+			<version>${org.exoplatform.kernel.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.gatein.portal</groupId>
+			<artifactId>exo.portal.component.web.controller</artifactId>
+			<version>${org.gatein.version}</version>
+		</dependency>
+		
+				<dependency>
+			<groupId>org.gatein.portal</groupId>
+			<artifactId>exo.portal.webui.portal</artifactId>
+			<version>${org.gatein.version}</version>
+		</dependency>
+
+	</dependencies>
+
+</project>
