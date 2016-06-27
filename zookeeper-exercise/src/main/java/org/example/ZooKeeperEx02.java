@@ -8,7 +8,9 @@ public class ZooKeeperEx02 {
         
         ZooKeeper zk = new ZooKeeper("localhost:2181", 3000, null);
 
-        byte[] data = zk.getData("/tmp/mynode", false, null);
-        System.out.println("Content of /tmp/mynode : " + new String(data));
+        byte[] data = zk.getData("/mynode", false, null);
+        System.out.println("Content of /mynode : " + new String(data));
+        
+        zk.close();
     }
 }

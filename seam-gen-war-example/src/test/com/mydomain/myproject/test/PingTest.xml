@@ -1,9 +1,0 @@
-<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
-
-<suite name="Ping Tests" verbose="2" parallel="false">
-   <test name="Ping Test">
-     <classes>
-       <class name="com.mydomain.myproject.test.PingTest"/>       
-     </classes>
-   </test>	
-</suite>
