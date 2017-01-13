@@ -18,34 +18,8 @@
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-jaxrs</artifactId>
-      <version>1.2.1.GA_CP01</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.slf4j</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>javax.activation</groupId>
-          <artifactId>activation</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>javassist</groupId>
-          <artifactId>javassist</artifactId>
-        </exclusion>
-
-        <exclusion>
-          <groupId>net.jcip</groupId>
-          <artifactId>jcip-annotations</artifactId>
-        </exclusion>
-        <exclusion>
-            <groupId>commons-httpclient</groupId>
-            <artifactId>commons-httpclient</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.apache.httpcomponents</groupId>
-          <artifactId>httpclient</artifactId>
-        </exclusion>
-      </exclusions>
+      <version>2.3.15.Final-redhat-1</version>
+      <scope>provided</scope>
     </dependency>
 
   </dependencies>
