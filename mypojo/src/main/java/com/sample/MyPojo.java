@@ -1,6 +1,8 @@
 package com.sample;
 
-public class MyPojo {
+import java.io.Serializable;
+
+public class MyPojo implements Serializable {
 
     private String name;
 
