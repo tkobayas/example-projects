@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PicketLink xmlns="urn:picketlink:identity-federation:config:2.1">
+  <PicketLinkSP xmlns="urn:picketlink:identity-federation:config:2.1"
+    BindingType="REDIRECT"
+    LogOutPage="/free/logout.jsp"
+    SupportsSignatures="false"
+  >
+    <!-- the full URL to where the IDP context is deployed to -->
+    <IdentityURL>http://localhost:8080/idp/</IdentityURL>
+    <!-- the full URP of this SP -->
+    <ServiceURL>http://localhost:8080/sp/</ServiceURL>
+  </PicketLinkSP>
+  <Handlers xmlns="urn:picketlink:identity-federation:handler:config:2.1">
+    <Handler class="org.picketlink.identity.federation.web.handlers.saml2.SAML2LogOutHandler" />
+    <Handler class="org.picketlink.identity.federation.web.handlers.saml2.SAML2AuthenticationHandler" />
+    <Handler class="org.picketlink.identity.federation.web.handlers.saml2.RolesGenerationHandler" />
+  </Handlers>
+</PicketLink>

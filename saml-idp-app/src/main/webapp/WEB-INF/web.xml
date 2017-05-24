@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <display-name>IDP</display-name>
+    <description> IDP Web Application for the PicketLink project </description>
+    <listener>
+        <listener-class>org.picketlink.identity.federation.web.listeners.IDPHttpSessionListener</listener-class>
+    </listener>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>protected</web-resource-name>
+            <description/>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>JBossAdmin</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>PicketLink IDP Application</realm-name>
+        <form-login-config>
+            <form-login-page>/jsp/login.jsp</form-login-page>
+            <form-error-page>/jsp/login-error.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-role>
+        <role-name>JBossAdmin</role-name>
+    </security-role>
+</web-app>
