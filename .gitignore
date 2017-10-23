@@ -6,4 +6,5 @@ build/classes/
 *~
 temp/
 transaction.log
+.tern-project
 
