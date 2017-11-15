@@ -1,0 +1,31 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<version>1.0</version>
+	<groupId>org.example</groupId>
+	<artifactId>custom-http-header-valve</artifactId>
+	<packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.web</groupId>
+			<artifactId>jbossweb</artifactId>
+			<version>7.5.7.Final-redhat-1</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.tomcat</groupId> -->
+		<!-- <artifactId>tomcat-catalina</artifactId> -->
+		<!-- <version>7.0.34</version> -->
+		<!-- <scope>provided</scope> -->
+		<!-- </dependency> -->
+
+	</dependencies>
+
+</project>
