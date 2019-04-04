@@ -1,0 +1,44 @@
+<!-- Plain HTML page that kicks us into the app -->
+
+<html>
+<head>
+</head>
+<script>
+function mytest() {
+
+var xhr = new XMLHttpRequest();
+var url = 'http://xxxx:8080/kie-server/services/rest/server/containers/proj1_1.0.0/'
+//var url = 'http://xxxx:8080/helloworld-1.0.0/hello';
+//var url = 'http://xxxx:8080/kie-server/services/rest/server/containers/proj1_1.0.0/processes/src.helloProcess/instances'
+
+
+
+const handler = () => {
+  console.log(xhr.responseText);
+}
+
+const getRequest = () => {
+	alert("1");
+xhr.open('GET', url);
+// xhr.open('GET', url, true, 'kieserver', 'kieserver1!');
+alert("2");
+//  xhr.open('POST', url, true, "kieserver", "kieserver1!");
+
+  xhr.onloadend = handler;
+  xhr.send(null);
+}
+
+//document.addEventListener('DOMContentLoaded', () => {
+//	alert("A");
+//  getRequest();
+//});
+
+alert("Z");
+getRequest();
+}
+
+</script>
+<body onload="mytest()">
+Hello14
+</body>
+</html>
