@@ -131,7 +131,7 @@
     <dependency>
       <groupId>org.jbpm</groupId>
       <artifactId>jbpm-bpmn2</artifactId>
-      <version>5.3.0.BRMS</version>
+      <version>6.2.0.Final</version>
     </dependency>
     <dependency>
       <groupId>org.jbpm</groupId>
